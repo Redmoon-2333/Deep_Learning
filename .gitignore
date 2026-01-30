@@ -1,0 +1,28 @@
+# 大型数据文件
+data/train.csv
+data/fashion-mnist_train.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 虚拟环境
+venv/
+env/
+ENV/
+
+# 操作系统
+.DS_Store
+Thumbs.db
