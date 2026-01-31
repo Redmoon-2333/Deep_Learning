@@ -8,20 +8,25 @@
 深度学习/
 ├── 01_神经网络基础.md          # 第1章：神经网络基础理论文档
 ├── 02_神经网络的学习.md        # 第2章：神经网络学习理论文档
-├── ch02_nn_base/               # 第2章代码：神经网络基础实现
+├── 03_反向传播算法.md          # 第3章：反向传播算法理论文档
+├── ch02_nn_base/               # 第1章配套代码：神经网络基础实现
 │   ├── 1_simple_network.py     # 简单三层网络实现
 │   ├── 2_digit_recognizer.py   # 手写数字识别（单样本）
 │   └── 3_digit_recognizer_batch.py  # 手写数字识别（批量处理）
-├── ch03_train/                 # 第3章代码：神经网络训练
+├── ch03_train/                 # 第2章配套代码：神经网络训练（数值微分）
 │   ├── 1_tangent_line.py       # 数值微分：绘制函数切线
 │   ├── 2_simple_net_grad.py    # 简单网络梯度计算示例
 │   ├── 3_gradient_descent.py   # 梯度下降法可视化
 │   ├── 4_digit_recognizer_nn_train.py  # 完整的手写数字训练
 │   └── two_layer_net.py        # 两层网络类实现
+├── ch04_backward/              # 第3章配套代码：反向传播算法
+│   ├── 1_digit_recognizer_nn_train.py  # 使用反向传播的完整训练
+│   └── two_layer_net.py        # 基于层结构的两层网络
 ├── common/                     # 公共模块
 │   ├── __init__.py
 │   ├── functions.py            # 激活函数和损失函数
 │   ├── gradient.py             # 数值梯度计算
+│   ├── layers.py                # 神经网络层实现（ReLU/Sigmoid/Affine/SoftmaxWithLoss）
 │   └── load_data.py            # 数据加载和预处理
 └── data/                       # 数据集目录
     ├── nn_sample               # 预训练网络参数
@@ -68,6 +73,24 @@
 - [x] 激活函数实现 (`common/functions.py`)
 - [x] 损失函数实现 (`common/functions.py`)
 
+### 第3章 反向传播算法 ✅
+
+**理论内容**：
+- [x] 计算图和链式法则
+- [x] 反向传播原理（加法/乘法节点）
+- [x] 激活层的反向传播（ReLU/Sigmoid）
+- [x] Affine层的反向传播
+- [x] Softmax-with-Loss层的反向传播
+- [x] 梯度检查方法
+
+**代码实现**：
+- [x] ReLU 层 (`common/layers.py`)
+- [x] Sigmoid 层 (`common/layers.py`)
+- [x] Affine 层 (`common/layers.py`)
+- [x] SoftmaxWithLoss 层 (`common/layers.py`)
+- [x] 基于层结构的两层网络 (`ch04_backward/two_layer_net.py`)
+- [x] 反向传播完整训练 (`ch04_backward/1_digit_recognizer_nn_train.py`)
+
 ## 公共模块说明
 
 ### common/functions.py
@@ -96,6 +119,17 @@
 | `numerical_diff` | 数值微分求导（中心差分） |
 | `_numerical_gradient` | 单样本梯度计算 |
 | `numerical_gradient` | 支持矩阵输入的梯度计算 |
+
+### common/layers.py
+
+包含神经网络层实现：
+
+| 类 | 说明 |
+|------|------|
+| `Relu` | ReLU激活层，支持前向和反向传播 |
+| `Sigmoid` | Sigmoid激活层，支持前向和反向传播 |
+| `Affine` | 仿射层（全连接层），执行 y = xW + b |
+| `SoftmaxWithLoss` | Softmax输出层+交叉熵损失，组合计算 |
 
 ### common/load_data.py
 
@@ -128,6 +162,17 @@ cd ch03_train
 python 4_digit_recognizer_nn_train.py
 ```
 
+### 运行反向传播训练
+
+```bash
+cd ch04_backward
+python 1_digit_recognizer_nn_train.py
+```
+
+**效率对比**：
+- `ch03_train/4_digit_recognizer_nn_train.py`：使用数值微分（慢）
+- `ch04_backward/1_digit_recognizer_nn_train.py`：使用反向传播（快 **500+倍**）
+
 ## 环境要求
 
 - Python 3.x
@@ -139,8 +184,10 @@ python 4_digit_recognizer_nn_train.py
 
 ## 后续计划
 
-- [ ] 第3章：反向传播算法
-- [ ] 第4章：神经网络训练技巧
+- [x] 第1章：神经网络基础
+- [x] 第2章：神经网络的学习
+- [x] 第3章：反向传播算法
+- [ ] 第4章：神经网络训练技巧（权重初始化、Batch Normalization、正则化等）
 - [ ] 第5章：卷积神经网络（CNN）
 - [ ] 第6章：循环神经网络（RNN）
 
