@@ -22,11 +22,14 @@
 ├── ch04_backward/              # 第3章配套代码：反向传播算法
 │   ├── 1_digit_recognizer_nn_train.py  # 使用反向传播的完整训练
 │   └── two_layer_net.py        # 基于层结构的两层网络
+├── ch05_optim/                 # 第4章配套代码：优化算法对比
+│   └── 1_optimiazer_compare.py # 优化器对比实验（SGD/Momentum/AdaGrad/Adam）
 ├── common/                     # 公共模块
 │   ├── __init__.py
 │   ├── functions.py            # 激活函数和损失函数
 │   ├── gradient.py             # 数值梯度计算
-│   ├── layers.py                # 神经网络层实现（ReLU/Sigmoid/Affine/SoftmaxWithLoss）
+│   ├── layers.py               # 神经网络层实现（ReLU/Sigmoid/Affine/SoftmaxWithLoss）
+│   ├── optimizer.py            # 优化器实现（SGD/Momentum/AdaGrad/RMSProp/Adam）
 │   └── load_data.py            # 数据加载和预处理
 └── data/                       # 数据集目录
     ├── nn_sample               # 预训练网络参数
@@ -91,6 +94,23 @@
 - [x] 基于层结构的两层网络 (`ch04_backward/two_layer_net.py`)
 - [x] 反向传播完整训练 (`ch04_backward/1_digit_recognizer_nn_train.py`)
 
+### 第4章 神经网络训练技巧 ✅
+
+**理论内容**：
+- [x] 深度神经网络及其问题（梯度消失/梯度爆炸）
+- [x] 优化算法（SGD、Momentum、AdaGrad、RMSProp、Adam）
+- [x] 学习率衰减策略
+- [x] 权重初始化（Xavier、He初始化）
+- [x] 正则化技术（Batch Normalization、权值衰减、Dropout）
+
+**代码实现**：
+- [x] SGD 优化器 (`common/optimizer.py`)
+- [x] Momentum 优化器 (`common/optimizer.py`)
+- [x] AdaGrad 优化器 (`common/optimizer.py`)
+- [x] RMSProp 优化器 (`common/optimizer.py`)
+- [x] Adam 优化器 (`common/optimizer.py`)
+- [x] 优化器对比实验 (`ch05_optim/1_optimiazer_compare.py`)
+
 ## 公共模块说明
 
 ### common/functions.py
@@ -130,6 +150,18 @@
 | `Sigmoid` | Sigmoid激活层，支持前向和反向传播 |
 | `Affine` | 仿射层（全连接层），执行 y = xW + b |
 | `SoftmaxWithLoss` | Softmax输出层+交叉熵损失，组合计算 |
+
+### common/optimizer.py
+
+包含各种优化算法实现：
+
+| 类 | 说明 | 适用场景 |
+|------|------|---------|
+| `SGD` | 随机梯度下降 | 基准算法 |
+| `Momentum` | 动量优化器 | 减少振荡，加速收敛 |
+| `AdaGrad` | 自适应梯度 | 稀疏数据 |
+| `RMSProp` | 均方根传播 | 解决AdaGrad学习率衰减问题 |
+| `Adam` | 自适应矩估计 | 综合性能最好，默认推荐 |
 
 ### common/load_data.py
 
@@ -173,6 +205,15 @@ python 1_digit_recognizer_nn_train.py
 - `ch03_train/4_digit_recognizer_nn_train.py`：使用数值微分（慢）
 - `ch04_backward/1_digit_recognizer_nn_train.py`：使用反向传播（快 **500+倍**）
 
+### 运行优化器对比实验
+
+```bash
+cd ch05_optim
+python 1_optimiazer_compare.py
+```
+
+该实验可视化对比 SGD、Momentum、AdaGrad、Adam 四种优化器在相同损失函数上的收敛轨迹。
+
 ## 环境要求
 
 - Python 3.x
@@ -187,9 +228,18 @@ python 1_digit_recognizer_nn_train.py
 - [x] 第1章：神经网络基础
 - [x] 第2章：神经网络的学习
 - [x] 第3章：反向传播算法
-- [ ] 第4章：神经网络训练技巧（权重初始化、Batch Normalization、正则化等）
+- [x] 第4章：神经网络训练技巧（优化算法、权重初始化、Batch Normalization、正则化等）
 - [ ] 第5章：卷积神经网络（CNN）
 - [ ] 第6章：循环神经网络（RNN）
+
+## 理论文档索引
+
+| 章节 | 文档 | 内容概要 |
+|------|------|---------|
+| 第1章 | [01_神经网络基础.md](01_神经网络基础.md) | 神经网络结构、激活函数、信号传递 |
+| 第2章 | [02_神经网络的学习.md](02_神经网络的学习.md) | 损失函数、数值微分、梯度下降法 |
+| 第3章 | [03_反向传播算法.md](03_反向传播算法.md) | 计算图、链式法则、各层反向传播 |
+| 第4章 | [04_学习的技巧.md](04_学习的技巧.md) | 优化算法、权重初始化、正则化技术 |
 
 ## 参考资料
 
@@ -198,4 +248,4 @@ python 1_digit_recognizer_nn_train.py
 
 ---
 
-**最后更新**：2026年1月30日
+**最后更新**：2026年2月1日
