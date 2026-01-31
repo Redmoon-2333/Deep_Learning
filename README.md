@@ -14,13 +14,18 @@
 │   └── 3_digit_recognizer_batch.py  # 手写数字识别（批量处理）
 ├── ch03_train/                 # 第3章代码：神经网络训练
 │   ├── 1_tangent_line.py       # 数值微分：绘制函数切线
-│   └── 2_simple_net_grad.py    # 简单网络梯度计算示例
+│   ├── 2_simple_net_grad.py    # 简单网络梯度计算示例
+│   ├── 3_gradient_descent.py   # 梯度下降法可视化
+│   ├── 4_digit_recognizer_nn_train.py  # 完整的手写数字训练
+│   └── two_layer_net.py        # 两层网络类实现
 ├── common/                     # 公共模块
 │   ├── __init__.py
 │   ├── functions.py            # 激活函数和损失函数
-│   └── gradient.py             # 数值梯度计算
+│   ├── gradient.py             # 数值梯度计算
+│   └── load_data.py            # 数据加载和预处理
 └── data/                       # 数据集目录
     ├── nn_sample               # 预训练网络参数
+    ├── train.csv               # MNIST训练数据
     ├── heart.csv               # 心脏病预测数据集
     ├── fashion-mnist_test.csv  # Fashion-MNIST测试集
     └── ...
@@ -56,6 +61,10 @@
 - [x] 数值梯度计算 (`common/gradient.py`)
 - [x] 绘制函数切线 (`ch03_train/1_tangent_line.py`)
 - [x] 简单网络梯度计算 (`ch03_train/2_simple_net_grad.py`)
+- [x] 梯度下降法可视化 (`ch03_train/3_gradient_descent.py`)
+- [x] 两层网络类 (`ch03_train/two_layer_net.py`)
+- [x] 数据加载模块 (`common/load_data.py`)
+- [x] 完整训练流程 (`ch03_train/4_digit_recognizer_nn_train.py`)
 - [x] 激活函数实现 (`common/functions.py`)
 - [x] 损失函数实现 (`common/functions.py`)
 
@@ -88,6 +97,14 @@
 | `_numerical_gradient` | 单样本梯度计算 |
 | `numerical_gradient` | 支持矩阵输入的梯度计算 |
 
+### common/load_data.py
+
+数据加载和预处理：
+
+| 函数 | 说明 |
+|------|------|
+| `get_data` | 加载MNIST数据，划分训练/测试集，归一化 |
+
 ## 快速开始
 
 ### 运行手写数字识别示例
@@ -97,11 +114,18 @@ cd ch02_nn_base
 python 3_digit_recognizer_batch.py
 ```
 
-### 运行梯度计算示例
+### 运行梯度下降示例
 
 ```bash
 cd ch03_train
-python 2_simple_net_grad.py
+python 3_gradient_descent.py
+```
+
+### 运行完整训练
+
+```bash
+cd ch03_train
+python 4_digit_recognizer_nn_train.py
 ```
 
 ## 环境要求
