@@ -65,6 +65,10 @@
 │   ├── 2_pooling_test.ipynb    # 池化层测试
 │   ├── 3_deep_cnn.ipynb        # 深度CNN架构
 │   └── 4.fashion_category.py   # Fashion-MNIST服装分类
+├── ch09_rnn/                   # 第9章配套代码：循环神经网络
+│   ├── 1_embedding_test.ipynb  # 词嵌入层测试
+│   ├── 2_rnn_test.ipynb        # RNN基础用法
+│   └── 3_poems_generation.py   # 古诗生成系统
 ├── common/                     # 公共模块
 │   ├── __init__.py
 │   ├── functions.py            # 激活函数和损失函数
@@ -226,6 +230,22 @@
 - [x] 深度CNN架构 (`ch08_cnn/3_deep_cnn.ipynb`)
 - [x] Fashion-MNIST服装分类 (`ch08_cnn/4.fashion_category.py`)
 
+### 第9章 循环神经网络（RNN） ✅
+
+**理论内容**：
+- [x] 自然语言处理概述（同义词词典、共现矩阵、Word2Vec）
+- [x] 词嵌入技术（Embedding层、One-hot vs Embedding）
+- [x] RNN基础结构与工作原理
+- [x] 梯度消失/爆炸与长期依赖问题
+- [x] LSTM长短期记忆网络（门控机制）
+- [x] GRU门控循环单元
+- [x] 双向RNN与深度RNN
+
+**代码实现**：
+- [x] 词嵌入实战 (`ch09_rnn/1_embedding_test.ipynb`)
+- [x] RNN基础用法 (`ch09_rnn/2_rnn_test.ipynb`)
+- [x] 古诗生成系统 (`ch09_rnn/3_poems_generation.py`)
+
 ## 公共模块说明
 
 ### common/functions.py
@@ -343,6 +363,15 @@ cd ch08_cnn
 python 4.fashion_category.py
 ```
 
+### 运行古诗生成
+
+```bash
+cd ch09_rnn
+python 3_poems_generation.py
+```
+
+该示例使用RNN模型训练古诗数据，然后生成符合格律的七言绝句。
+
 ## 环境要求
 
 - Python 3.x
@@ -357,8 +386,8 @@ python 4.fashion_category.py
 ## 学习路线建议
 
 ```
-第1章 → 第2章 → 第3章 → 第4章 → 第5章 → 第6章 → 第7章 → 第8章
-(基础)   (学习)   (反向)   (技巧)   (PyTorch) (核心)  (实践)  (CNN)
+第1章 → 第2章 → 第3章 → 第4章 → 第5章 → 第6章 → 第7章 → 第8章 → 第9章
+(基础)   (学习)   (反向)   (技巧)   (PyTorch) (核心)  (实践)  (CNN)   (RNN)
 ```
 
 ## 理论文档索引
@@ -373,6 +402,7 @@ python 4.fashion_category.py
 | 第6章 | [05_PyTorch核心概念详解.md](05_PyTorch核心概念详解.md) | 自动微分、梯度管理、线性回归 |
 | 第7章 | [06_PyTorch深度学习实践.md](06_PyTorch深度学习实践.md) | 激活函数、初始化、损失函数、优化器 |
 | 第8章 | [07_卷积神经网络.md](07_卷积神经网络.md) | CNN原理、卷积层、池化层、经典架构 |
+| 第9章 | [08_循环神经网络.md](08_循环神经网络.md) | RNN/LSTM/GRU、词嵌入、古诗生成 |
 
 ## 参考资料
 
